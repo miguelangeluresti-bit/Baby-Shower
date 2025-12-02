@@ -1,0 +1,253 @@
+<Bab Shower html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Baby Shower: Alberto y Laura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Varela+Round:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Varela Round', sans-serif;
+            background-color: #e3f2fd;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        /* --- MÚSICA DE FONDO (URL pública libre de derechos) --- */
+        /* Nota: La reproducción se inicia con el clic del usuario en la pantalla de bloqueo */
+        #bg-music {
+             display: none;
+        }
+
+        /* --- PANTALLA DE BLOQUEO/SOBRE --- */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #42a5f5, #2196f3);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+
+        .envelope-icon {
+            font-size: 80px;
+            animation: bounce 2s infinite;
+        }
+
+        .tap-text {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            animation: pulse 1.5s infinite;
+            font-weight: bold;
+        }
+
+        /* --- CONTENIDO DE LA INVITACIÓN --- */
+        #main-content {
+            height: 100%;
+            overflow-y: auto;
+            background: url('https://www.transparenttextures.com/patterns/clouds.png'), linear-gradient(to bottom, #bbdefb, #fff);
+            padding: 20px;
+            text-align: center;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-top: 20px;
+            margin-bottom: 50px;
+            border: 3px solid #64b5f6; /* Borde suave azul */
+        }
+
+        /* --- TIPOGRAFÍA Y DECORACIÓN --- */
+        h1 {
+            font-family: 'Chewy', cursive;
+            color: #1565c0;
+            font-size: 3rem;
+            margin: 0;
+            line-height: 1;
+            text-shadow: 2px 2px 0px #bbdefb;
+        }
+
+        h2 {
+            font-family: 'Chewy', cursive;
+            color: #546e7a;
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        .parents {
+            font-size: 1.3rem;
+            color: #0d47a1;
+            font-weight: bold;
+            margin: 25px 0;
+            padding: 15px;
+            border-top: 2px dashed #bbdefb;
+            border-bottom: 2px dashed #bbdefb;
+        }
+
+        .details {
+            margin: 20px 0;
+            font-size: 1.1rem;
+            color: #455a64;
+        }
+        
+        .highlight {
+            color: #1976d2;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        /* --- BOTONES DE ACCIÓN --- */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: block;
+            padding: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+            transition: transform 0.1s, box-shadow 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .btn:active { transform: scale(0.98); }
+
+        .btn-map { background: linear-gradient(to right, #ff9800, #f57c00); }
+        .btn-wa { background: linear-gradient(to right, #25d366, #128c7e); }
+
+        /* --- ANIMACIONES --- */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3" type="audio/mpeg">
+        Tu navegador no soporta el audio.
+    </audio>
+
+    <div id="lock-screen" onclick="openInvitation()">
+        <div class="envelope-icon">✉️</div>
+        <div class="tap-text">Tienes una Invitación Especial<br><small>(Toca para Abrir y Escuchar)</small></div>
+    </div>
+
+    <div id="main-content">
+        <div class="container">
+            <div style="font-size: 3rem;">🧸 💙</div>
+            <h1 class="fade-in-up" style="animation-delay: 0.2s;">Baby Shower</h1>
+            <h2 class="fade-in-up" style="animation-delay: 0.4s;">¡Esperamos a un niño!</h2>
+
+            <p class="fade-in-up" style="animation-delay: 0.6s;">
+                Con gran alegría, te invitamos a celebrar la próxima llegada de nuestro hijo.
+            </p>
+
+            <div class="parents fade-in-up" style="animation-delay: 0.8s;">
+                Alberto Vélez Ramírez<br>
+                &<br>
+                Laura Fabiola Reyes Moreno
+            </div>
+
+            <div class="details fade-in-up" style="animation-delay: 1.0s;">
+                <span class="highlight">📅 Fecha</span>
+                Domingo, 8 de Diciembre del 2025
+            </div>
+
+            <div class="details fade-in-up" style="animation-delay: 1.2s;">
+                <span class="highlight">⏰ Hora</span>
+                11:00 AM
+            </div>
+
+            <div class="details fade-in-up" style="animation-delay: 1.4s;">
+                <span class="highlight">📍 Domicilio</span>
+                Heriberto Frias 909, Col. del Valle Centro, Benito Juárez, 03100 Ciudad de México, CDMX.
+            </div>
+
+            <div class="actions fade-in-up" style="animation-delay: 1.6s;">
+                <a href="https://www.google.com/maps/search/?api=1&query=Heriberto+Frias+909+Col+del+Valle+Centro+Benito+Juarez+CDMX" target="_blank" class="btn btn-map">
+                    🗺️ Ver Ubicación en Maps
+                </a>
+
+                <a href="https://wa.me/525537123514?text=¡Hola+Alberto+y+Laura!+Confirmo+mi+asistencia+al+Baby+Shower+el+8+de+Diciembre+👶💙" target="_blank" class="btn btn-wa">
+                    ✅ Confirmar al WhatsApp
+                </a>
+            </div>
+            
+            <br>
+            <p style="font-size: 0.9rem; color: #78909c;">¡Esperamos verte ahí!</p>
+        </div>
+    </div>
+
+    <script>
+        function openInvitation() {
+            const lockScreen = document.getElementById('lock-screen');
+            const mainContent = document.getElementById('main-content');
+            const audio = document.getElementById('bg-music');
+
+            // 1. Iniciar la reproducción de la música
+            audio.volume = 0.4; 
+            audio.play().catch(e => console.log("Audio play failed: ", e));
+
+            // 2. Deslizar la pantalla de bloqueo para revelar la invitación
+            lockScreen.style.transform = 'translateY(-100%)';
+
+            // 3. Mostrar contenido (después de un pequeño delay para la transición)
+            setTimeout(() => {
+                mainContent.style.display = 'block';
+                // Animación de opacidad
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';
+                }, 100);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
